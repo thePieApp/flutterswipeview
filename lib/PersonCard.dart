@@ -16,7 +16,7 @@ class MyCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.2),
             ),
             borderRadius: BorderRadius.circular(20)),
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height * 1.0,
         width: MediaQuery.of(context).size.width * 0.9,
         child: Image.asset(resource),
       ),

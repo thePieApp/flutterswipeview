@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'PersonCard.dart';
 import 'Swipe.dart';
 
 void main() {
@@ -32,36 +33,23 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+List<MyCard> cardStack = [
+  MyCard('assets/images/model.jpeg'),
+  MyCard('assets/images/freedom_0.jpeg'),
+  MyCard('assets/images/freedom_1.jpeg'),
+  MyCard('assets/images/freedom_2.jpeg'),
+  MyCard('assets/images/freedom_3.jpeg'),
+  MyCard('assets/images/freedom_4.jpeg'),
+  MyCard('assets/images/freedom_5.jpeg'),
+  MyCard('assets/images/freedom_6.jpeg'),
+];
 
-  bool liked_you = false;
+class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-    final swipeWidget = Swipe(GlobalKey());
-
-    return Scaffold(
-      // our code
-      body: swipeWidget,
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            liked_you=!liked_you;
-          });
-          Fluttertoast.showToast(
-              msg: liked_you ? "The Person Likes You Now" : "The Person Does Not Like You Now",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0
-          );
-        },
-        tooltip: 'Change liked you',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    final swipeWidget = Swipe(GlobalKey(), cardStack);
+    return Container(child: swipeWidget);
   }
+
 }
